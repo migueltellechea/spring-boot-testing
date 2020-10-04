@@ -3,24 +3,20 @@ package com.jab.microservices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class MyApplicationTests {
+class MyServiceTests {
 
     @Autowired
     MyService myService;
 
-    @Autowired
-    MyController myController;
-
-    @Autowired
-    MyController2 myController2;
-
     @Test
-    void contextLoads() {
+    void myServiceGreetingTest() {
         assertThat(myService!=null);
-        assertThat(myController!=null);
-        assertThat(myController2!=null);
+        assertThat(MyService.greetingMessage.equals(myService.greet()));
     }
 }
